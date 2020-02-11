@@ -17,9 +17,15 @@ public class ArrayTask {
         int[][] array4 = new int[8][8];
         multiArrayChangeDiagonal(array4);
 
-        int [] a =  createArray(10);
-        System.out.println(Arrays.toString(a));
-        System.out.println(maxNumberInArray(a));
+        int[] array5 = createRandomArray(10);
+        System.out.println(Arrays.toString(array5));// вывел массив для наглядности в котором будем искать минимальное и максимальное значение
+        System.out.println(maxNumberInArray(array5));
+        System.out.println(minNumberInArray(array5));
+
+        int[] array6 = createRandomArray(10);
+//        int[] array6 = {1, 5, 3, 2, 11};// Пример вывода true
+        System.out.println(checkBalanc(array6));
+
     }
 
     public static int[] changeArr(int[] arr) {
@@ -63,7 +69,7 @@ public class ArrayTask {
         }
     }
 
-    public static int[] createArray(int i) {
+    public static int[] createRandomArray(int i) {
         int[] arr = new int[i];
         Random rand = new Random();
         for (int j = 0; j < arr.length; j++) {
@@ -81,13 +87,31 @@ public class ArrayTask {
         }
         return max;
     }
+
     public static int minNumberInArray(int[] arr) {
         int min = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            if (min <= arr[i]) {
+            if (min >= arr[i]) {
                 min = arr[i];
             }
         }
         return min;
+    }
+
+    public static boolean checkBalanc(int[] arr) {
+        int sumfirst = 0;
+        int sumsecond = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                sumsecond += arr[j];
+            }
+            sumfirst += arr[i];
+            if (sumfirst == sumsecond) {
+                return true;
+            } else {
+                sumsecond = 0;
+            }
+        }
+        return false;
     }
 }
