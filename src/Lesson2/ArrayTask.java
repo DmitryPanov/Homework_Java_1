@@ -1,6 +1,7 @@
 package Lesson2;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class ArrayTask {
     public static void main(String[] args) {
@@ -15,6 +16,10 @@ public class ArrayTask {
 
         int[][] array4 = new int[8][8];
         multiArrayChangeDiagonal(array4);
+
+        int [] a =  createArray(10);
+        System.out.println(Arrays.toString(a));
+        System.out.println(maxNumberInArray(a));
     }
 
     public static int[] changeArr(int[] arr) {
@@ -56,5 +61,33 @@ public class ArrayTask {
             }
             System.out.println();
         }
+    }
+
+    public static int[] createArray(int i) {
+        int[] arr = new int[i];
+        Random rand = new Random();
+        for (int j = 0; j < arr.length; j++) {
+            arr[j] = rand.nextInt(100);
+        }
+        return arr;
+    }
+
+    public static int maxNumberInArray(int[] arr) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (max <= arr[i]) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+    public static int minNumberInArray(int[] arr) {
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (min <= arr[i]) {
+                min = arr[i];
+            }
+        }
+        return min;
     }
 }
