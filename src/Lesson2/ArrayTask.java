@@ -22,10 +22,12 @@ public class ArrayTask {
         System.out.println(maxNumberInArray(array5));
         System.out.println(minNumberInArray(array5));
 
-        int[] array6 = createRandomArray(10);
+        int[] array6 = createRandomArray(6);
 //        int[] array6 = {1, 5, 3, 2, 11};// Пример вывода true
         System.out.println(checkBalanc(array6));
 
+        int[] array7 = {1, 2, 3, 4, 5, 6, 7};
+        System.out.println(Arrays.toString(redesignArray(array7, 44)));
     }
 
     public static int[] changeArr(int[] arr) {
@@ -61,7 +63,7 @@ public class ArrayTask {
                 if (i == j || (i + j) == arr.length - 1) {
                     arr[i][j] = 1;
                 } else {
-                    arr[i][j] = 0;
+                    arr[i][j] = 0;// думал заполнить рандомными числами ,но остановился на 0
                 }
                 System.out.printf("%d ", arr[i][j]);
             }
@@ -114,4 +116,30 @@ public class ArrayTask {
         }
         return false;
     }
+
+    public static int[] redesignArray(int[] arr, int n) {
+
+        int b = arr[0];
+        for (int i = 0; i < returnBorderRange(arr, n); i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (j == arr.length - 1) {
+                    arr[j] = b;
+                } else {
+                    arr[j] = arr[j + 1];
+                }
+            }
+            b = arr[0];
+        }
+        return arr;
+    }
+
+    public static int returnBorderRange(int[] arr, int n) {
+        int a;
+        if (n < 0) {
+            return a = arr.length + n % arr.length;
+        } else {
+            return n % arr.length;
+        }
+    }
 }
+
