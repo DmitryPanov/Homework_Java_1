@@ -2,7 +2,6 @@ package Lesson4;
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.CountDownLatch;
 
 public class XOGame {
 
@@ -22,19 +21,31 @@ public class XOGame {
         gameField();
         printMap();
 
-        while (true){
+        while (true) {
             humanTurn();
             printMap();
             Count++;
-            if (isFull(Count)==true){
+            if(chechWin(DOT_X)){
+                System.out.println("Игрок победил!");
+                break;
+            }
+
+            if (isFull(Count) == true) {
                 System.out.println("Ничья!");
+                break;
             }
 
             compTurn();
             printMap();
             Count++;
-            if (isFull(Count)==true){
+            if(chechWin(DOT_O)){
+                System.out.println("Пластмассовый мир победил, макет оказался сильней!)");
+                break;
+            }
+
+            if (isFull(Count) == true) {
                 System.out.println("Ничья!");
+                break;
             }
         }
 
@@ -81,19 +92,42 @@ public class XOGame {
         }
         return map[y][x] == DOT_EMPTY;
     }
-    public static void compTurn(){
+
+    public static void compTurn() {
         int x, y;
         do {
-            y = random.nextInt(SIZE) ;
+            y = random.nextInt(SIZE);
             x = random.nextInt(SIZE);
         } while (!isCellValid(y, x));
         map[y][x] = DOT_O;
     }
 
-    public static boolean isFull(int Count){
-        if (Count == SIZE*SIZE){
-            return true;
-        }
+//    public static boolean isFull() {
+//        for (int i = 0; i < SIZE; i++) {
+//            for (int j = 0; j < SIZE; j++) {
+//                if (map[i][j] == DOT_EMPTY) {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+//    }
+
+    public static boolean isFull(int Count) {
+        return Count == SIZE*SIZE;
+    }
+
+    public static boolean chechWin(char symbol){
+        if(map[0][0]== symbol && map[0][1]== symbol && map[0][2]== symbol ){return true;}
+        if(map[1][0]== symbol && map[1][1]== symbol && map[1][2]== symbol ){return true;}
+        if(map[2][0]== symbol && map[2][1]== symbol && map[2][2]== symbol ){return true;}
+
+        if(map[0][0]== symbol && map[1][0]== symbol && map[2][0]== symbol ){return true;}
+        if(map[0][1]== symbol && map[1][1]== symbol && map[2][1]== symbol ){return true;}
+        if(map[0][2]== symbol && map[1][2]== symbol && map[2][2]== symbol ){return true;}
+
+        if(map[0][0]== symbol && map[1][1]== symbol && map[2][2]== symbol ){return true;}
+        if(map[0][2]== symbol && map[1][1]== symbol && map[2][0]== symbol ){return true;}
         return false;
     }
 
