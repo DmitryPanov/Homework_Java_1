@@ -21,12 +21,15 @@ class Person{
     public void print(){
         System.out.println("Name: " + name + "\nPosition: " + position + "\nEmail: " + email + "\nPhone Number: " + phoneNumber + "\nSalary: " + salary + "\nAge: " + age);
     }
+
     public int getAge() {
         return age;
     }
+    public int getSalary() {
+        return salary;
+    }
 
     public Person(){
-
     }
 
     public void setName(String name) {
@@ -46,11 +49,20 @@ class Person{
     }
 
     public void setSalary(int salary) {
-        this.salary = salary;
+        if (salary <= 0) {
+            System.out.println("Salary <= 0");
+        } else {
+            this.salary = salary;
+        }
+
     }
 
     public void setAge(int age) {
-        this.age = age;
+        if (age <= 0) {
+            System.out.println("Age <= 0");
+        } else {
+            this.age = age;
+        }
     }
 }
 
@@ -59,6 +71,8 @@ public class Lesson5Person {
 
     public static void main(String[] args) {
 //        Person pers = new Person("IvanovIvan","Engineer", "ivivan@mailbox.com", 892312312, 30000, 30);
+//        pers.setSalary(-10);
+//        pers.setAge(0);
 //        pers.print();
 
         Person [] persArray = new Person[5];
