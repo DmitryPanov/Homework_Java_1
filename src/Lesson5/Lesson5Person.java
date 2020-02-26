@@ -23,7 +23,6 @@ class Person {
     }
 
     public Person(){
-
     }
 
     public void print(){
