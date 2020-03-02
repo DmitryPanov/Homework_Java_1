@@ -2,13 +2,16 @@ package Lesson6.Animals;
 
 public class Animal {
     String name;
+    static int countAnimal;
 
     public Animal(String name) {
         this.name = name;
+        countAnimal=countAnimal +1;
+        System.out.println("Количество созданных животных: " + countAnimal);
     }
-    public Animal(){
-
-    }
+//    public Animal(){
+//
+//    }
 
     public void run(int lenghtRun) {
         if (lenghtRun <= 0) {

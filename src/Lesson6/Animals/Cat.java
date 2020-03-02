@@ -1,8 +1,13 @@
 package Lesson6.Animals;
 
 public class Cat extends Animal {
+
+    static int countCat;
+
     public Cat(String name) {
         super(name);
+        countCat +=1;
+        System.out.println("Количество созданных котов: " + countCat);
     }
 
     @Override
@@ -32,10 +37,7 @@ public class Cat extends Animal {
     }
 
     private boolean checkJump(double jump) {
-        if (jump <= 0 || jump > 2) {
-            return false;
-        }
-        return true;
+        return !(jump <= 0) && !(jump > 2);
     }
 
     private boolean checkSwim(int lenghtSwim) {
