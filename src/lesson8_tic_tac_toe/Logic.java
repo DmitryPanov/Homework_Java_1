@@ -22,6 +22,7 @@ public class Logic {
     public static String winnerName = "...";
 
 
+
     public static void go() {
         gameOver = true;
         printMap();
@@ -29,9 +30,8 @@ public class Logic {
 
         if (chechWin2(DOT_X)) {
             System.out.println("Игрок победил!");
-            winnerName = "Игрок победил!";
+            winnerName = "<html><center>Игрок победил!</html></center>";
             new Conclusion(winnerName);
-
             return;
         }
 
@@ -61,6 +61,7 @@ public class Logic {
             new Conclusion(winnerName);
             return;
         }
+
         gameOver = false;
     }
 
@@ -99,9 +100,9 @@ public class Logic {
 //        map[y][x] = DOT_X;
 //    }
 
-    public static void setHumanXY(int y,int x){
-        if (isCellValid(y,x)){
-            map[y][x]=DOT_X;
+    public static void setHumanXY(int y, int x) {
+        if (isCellValid(y, x)) {
+            map[y][x] = DOT_X;
             go();
         }
     }
@@ -116,6 +117,8 @@ public class Logic {
 
     public static void compTurn() {
         int x, y;
+        long currentKarma, maxKarma;
+        int maxKarmaX = 0, maxKarmaY = 0;
 
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
@@ -148,7 +151,11 @@ public class Logic {
             x = random.nextInt(SIZE);
         } while (!isCellValid(y, x));
         map[y][x] = DOT_O;
+
     }
+
+
+
 
 
 //        public static boolean isFull() {
